@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Exam>
+
+@{ ViewData["Title"] = "Sınavlar"; }
+
+<div class="row">
+    <div class="col-12"><h2>Sınavlar</h2></div>
+
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table">
+            <tr>
+                <td>
+                    #
+                </td>
+                <td>
+                    Başlık
+                </td>
+                <td>
+                    Tarih
+                </td>
+                <td>
+                    Sınav Giriş
+                </td>
+                <td></td>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Article.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedDate)
+    </td>
+    <td>
+        <a href="~/Exam/StartExam/@item.ID">Sınava Başla</a>
+    </td>
+    <td>
+
+        @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+    </td>
+</tr>}
+
+        </table>
+    </div>
+
+</div>
+
